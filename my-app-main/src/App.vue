@@ -1,17 +1,12 @@
 <template>
   <v-app >
-    
-  
 
-
-      <v-container >
+      <v-container fluid style="margin:0px; padding:0px; width:100%; min-height: 100vh" >
         <v-content >
-          <router-view></router-view>
+          <router-view v-bind:state="state"> 
+          </router-view>
         </v-content>
       </v-container>
-
-     
-
     
   </v-app>
 </template>
@@ -25,24 +20,25 @@ export default {
   },
   data() {
     return {
-      
+      state:{
+        kurl:"http://localhost:8080/",
+      }
     }
   },
-    
      
 }
 </script>
 
 <style lang="scss">
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 
   #app {
-    font-family: 'Raleway';
+    font-family: 'Quicksand', sans-serif;
     
   }
+
 
 
 
