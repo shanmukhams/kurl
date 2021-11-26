@@ -22,6 +22,7 @@ export default {
     return {
       state:{
         kurl:"http://localhost:8080/",
+        lurl:"https://www.youtube.com/watch?v=FbEW3xAmhKs&list=PL4cUxeGkcC9g0MQZfHwKcuB0Yswgb3gA5&index=2"
       }
     }
   },

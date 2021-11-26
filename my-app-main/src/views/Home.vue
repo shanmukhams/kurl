@@ -15,12 +15,14 @@
             </v-flex>
             <v-flex xs12 md12 class="textbox px-5 pt-6"> 
               <v-text-field
-                  v-model="lurl"
+                  v-model="state.lurl"
                   label="Enter the URL"
                   single-line
                   outlined
                   clearable
                   append-outer-icon="mdi-send-circle-outline"
+                 
+                  @click="getKurl"
                 ></v-text-field>
             </v-flex>
             <v-flex xs12 md12 > 
@@ -50,15 +52,19 @@
                          
                           <v-card-title class="justify-center px-0 pb-0">
                             <v-text-field
+                              class="white--text"
+                              color="white"
+                              text-color="white"
                               v-model="state.kurl"
                               label="KURL"
                               outlined
                               readonly
                               prepend-icon="mdi-swap-horizontal-bold"
+                              ref="textToCopy"
                             ></v-text-field>
                           </v-card-title>
 
-                          <v-btn dark class="ml-8" ><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
+                          <v-btn dark class="ml-8" @click="copyText"><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
                         
                         </v-flex>
                         
@@ -96,10 +102,31 @@ export default {
   },
   data() {
     return {
-      lurl:"https://www.youtube.com/watch?v=FbEW3xAmhKs&list=PL4cUxeGkcC9g0MQZfHwKcuB0Yswgb3gA5&index=2"
+      
 
     }
   },
+  methods: {
+        copyText () {
+          let textToCopy = this.$refs.textToCopy.$el.querySelector('input')
+          textToCopy.select()
+          document.execCommand("copy");
+        }
+      },
+
+       getKurl() {
+        console.log("hi")
+        const res =  fetch('http://localhost:3000/genkurl', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(this.state),
+        })
+
+      const data =  res.json()
+      console.log(data)
+    },
 
   
 }

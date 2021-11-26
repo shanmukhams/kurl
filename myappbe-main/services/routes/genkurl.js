@@ -2,12 +2,13 @@ const express = require('express');
 const md5 = require("md5")
 const router = express.Router();
 const Url = require("../models/Url");
-const 
+
 
 
 
 router.post('/', async (req, res) => {
-  lurl = req.body
+  lurl = req.body.lurl
+  console.log(lurl)
   md5string = md5(lurl["url"])
 
   // bin = require("../addons/str2binary")(md5string)
