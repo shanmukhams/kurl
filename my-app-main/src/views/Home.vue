@@ -1,7 +1,7 @@
 <template>
 
 
-    <v-layout row wrap >
+    <v-layout row wrap style="margin:0px; padding:0px; " >
       <v-flex xs12 md6> 
         <v-card flat class="left" > 
           <Left :state="state"/>

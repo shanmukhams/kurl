@@ -2,10 +2,10 @@
   <v-app >
 
       <v-container fluid style="margin:0px; padding:0px; width:100%; min-height: 100vh" >
-        <v-content >
+        <v-main style="margin:0px; padding:0px; width:100%; min-height: 100vh" >
           <router-view v-bind:state="state"> 
           </router-view>
-        </v-content>
+        </v-main>
       </v-container>
     
   </v-app>
@@ -22,7 +22,14 @@ export default {
     return {
       state:{
         kurl:"",
-        lurl:""
+        fullKurl:"",
+        lurl:"",
+        isStats:false,
+        ts:{
+          agg:'',
+          x:'',
+          y:''
+        }
       }
     }
   },

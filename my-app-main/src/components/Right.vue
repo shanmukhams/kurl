@@ -16,9 +16,10 @@
                    
                     <v-card-title class="justify-center px-0 pb-0">
                       <v-text-field
-                        v-model="state.kurl"
+                        v-model="state.fullKurl"
                         label="KURL"
                         outlined
+                        dark
                         readonly
                         prepend-icon="mdi-swap-horizontal-bold"
                         ref="textToCopy"
@@ -26,6 +27,8 @@
                     </v-card-title>
 
                     <v-btn dark class="ml-8" @click="copyText"><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
+
+                    <v-btn dark class="ml-8" @click="newTab"><v-icon dark left>mdi-newspaper-variant-multiple</v-icon>Open in New tab</v-btn>
                   
                   </v-flex>
                   
@@ -35,7 +38,35 @@
           </v-flex>
          
         </v-layout>
+        <v-layout row wrap class="stats" v-if="state.isStats">
+          
+        <v-flex xs12 md6 >
+          <v-card flat class="statsount">
+          <DBCount :stat="stats.kurl" :state="state"/>
+          </v-card>
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-card flat class="statsount">
+          <DBCount :stat="stats.lurl" :state="state"/>
+          </v-card>
+        </v-flex>
+       
+      </v-layout>
+      <v-layout row wrap class="stats" v-if="state.isStats">
+          
+        <v-flex xs12 md12 >
+          <v-card flat class="ml-5">
+          <TimeGraph :state="state"/>
+          </v-card>
+        </v-flex>
+        
+       
+      </v-layout>
+
       </v-card>
+
+      
+
     </v-container>
 
      
@@ -45,17 +76,32 @@
 </template>
 
 <script>
+import DBCount from './DBCount.vue'
+import TimeGraph from './TimeGraph.vue'
 
 export default {
   name: 'Right',
-  components: {},
+  components: {DBCount, TimeGraph},
   props: {
     state: { },
   },
   data() {
     return {
-     
+      stats:{
+        kurl:{
+          icon:"mdi-cloud-search",
+          name:"Total Kurl Hits",
+          api:"http://localhost:3000/getstats/kurl/",
+          count:""
+        },
+        lurl:{
+          icon:"mdi-archive-refresh-outline",
+          name:"Total Lurl Hits",
+          api:"http://localhost:3000/getstats/lurl/",
+          count:""
+        }
 
+    }
     }
   },
   methods:{
@@ -65,6 +111,12 @@ export default {
           textToCopy.select()
           document.execCommand("copy");
         },
+
+        newTab () {
+          let route = this.$router.resolve({ path: "/"+this.state.kurl });
+          window.open(route.href);
+        },
+
         
   }
   
@@ -74,14 +126,27 @@ export default {
 <style>
 
 .right {
- 
-  padding-top: 8%;
+  padding-top: 60px;
   margin-right: -10%;
-  background-color: #116466 !important
+  background-color: #116466 !important;
+   /* min-height: 100vh */
 }
 
 .text {
   background: #116466 !important
+}
+
+.stats {
+  padding-top: 8%;
+  padding-right:35%;
+  align-items: center;
+  background: #116466 !important
+}
+
+.statsount{
+  background: #116466 !important;
+  /* padding-right:30%; */
+  padding-left:10%;
 }
 
 

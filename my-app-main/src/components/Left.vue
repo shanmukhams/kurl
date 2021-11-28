@@ -57,8 +57,9 @@ export default {
   },
    methods:{
      async getKurl() {
+       this.state.isStats = false
        console.log(this.state)
-          const res = await fetch('http://localhost:3000/getkurl', {
+          var res = await fetch('http://localhost:3000/getkurl', {
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
@@ -66,9 +67,14 @@ export default {
             body: JSON.stringify(this.state),
           })
 
-            const data =  await res.json()
+            var data =  await res.json()
             this.state.kurl = data.kurl
-            console.log(data)
+            this.state.fullKurl = window.location.protocol+"//"+window.location.host+"/"+this.state.kurl
+            this.state.isStats = true
+
+           
+
+            
         },
   
   
