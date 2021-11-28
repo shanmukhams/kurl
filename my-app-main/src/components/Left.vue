@@ -13,12 +13,13 @@
       </v-flex>
       <v-flex xs12 md12 class="textbox px-5 pt-6"> 
         <v-text-field
-            v-model="lurl"
+            v-model="state.lurl"
             label="Enter the URL"
             single-line
             outlined
             clearable
             append-outer-icon="mdi-send-circle-outline"
+            @click:append-outer="getKurl"
           ></v-text-field>
       </v-flex>
       <v-flex xs12 md12 > 
@@ -46,7 +47,7 @@ export default {
   name: 'Left',
   components: {Header, Footer},
   props:{
-    lurl:String
+    state:{}
   },
   data() {
     return {
@@ -55,6 +56,20 @@ export default {
     }
   },
    methods:{
+     async getKurl() {
+       console.log(this.state)
+          const res = await fetch('http://localhost:3000/getkurl', {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify(this.state),
+          })
+
+            const data =  await res.json()
+            this.state.kurl = data.kurl
+            console.log(data)
+        },
   
   
 }}

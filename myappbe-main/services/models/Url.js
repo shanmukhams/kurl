@@ -10,12 +10,13 @@ const Url = sequelize.define("Url", {
   lurl: {
     type: Sequelize.STRING,
     allowNull: false,
-    primaryKey: true,
+    unique: true,
   },
   kurl: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
+    primaryKey: true,
   },
   extraChar:{
     type:Sequelize.STRING

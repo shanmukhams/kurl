@@ -13,17 +13,19 @@
                   <v-flex xs12 md8 >
                     <br/>
                     <h3 class="font-22 capitalize">Your KURL is . . .</h3>
-                    {{this.state}}
+                   
                     <v-card-title class="justify-center px-0 pb-0">
                       <v-text-field
+                        v-model="state.kurl"
                         label="KURL"
                         outlined
                         readonly
                         prepend-icon="mdi-swap-horizontal-bold"
+                        ref="textToCopy"
                       ></v-text-field>
                     </v-card-title>
 
-                    <v-btn dark class="ml-8" ><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
+                    <v-btn dark class="ml-8" @click="copyText"><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
                   
                   </v-flex>
                   
@@ -55,6 +57,15 @@ export default {
      
 
     }
+  },
+  methods:{
+    
+        copyText () {
+          let textToCopy = this.$refs.textToCopy.$el.querySelector('input')
+          textToCopy.select()
+          document.execCommand("copy");
+        },
+        
   }
   
 }

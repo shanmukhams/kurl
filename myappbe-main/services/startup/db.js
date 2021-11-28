@@ -20,11 +20,20 @@ const winston = require('winston');
 
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("kurl", "shanmukhams", "21051994", {
+const sequelize = new Sequelize("kurl", "postgres", "21051994", {
   dialect: "postgres",
   host: "localhost",
   port:5432
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 sequelize.sync().then(result=>{
   console.log("success")
