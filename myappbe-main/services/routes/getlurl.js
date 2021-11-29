@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Url = require("../models/Url");
 const LogCrud = require('../addons/crud')
+const logger = require('../startup/logging');
 
 
 router.get('/', async (req, res) => {
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
     
   })
   .catch((error) => {
-      console.log(error);
+      logger.error('error in getting the lurl'+error);
       res.status(400).send({
         message: 'This is an error!'
      });})

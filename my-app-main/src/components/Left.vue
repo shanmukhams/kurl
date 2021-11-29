@@ -22,7 +22,8 @@
             @click:append-outer="getKurl"
           ></v-text-field>
       </v-flex>
-      <v-flex xs12 md12 > 
+
+      <v-flex xs12 md12 v-if="$vuetify.breakpoint.xs? false: true"> 
         <div class="heading mt-8" style="text-align: center;"><span>OR</span></div>
       </v-flex>
     </v-layout>

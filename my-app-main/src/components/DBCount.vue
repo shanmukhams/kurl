@@ -4,7 +4,7 @@
   <v-card  class="count">
     <v-list-item >
       <v-list-item-content>
-        <v-list-item-title class="text-h6" style="text-align: center;">
+        <v-list-item-title :class="$vuetify.breakpoint.xs ? 'text-h8':'text-h6'"  style="text-align: center;">
           {{this.stat.name}}
         </v-list-item-title>
       </v-list-item-content>
@@ -13,11 +13,11 @@
     <v-card-text class="count2">
       <v-row align="center">
         <v-col
-          class="text-h2"
+          :class="$vuetify.breakpoint.xs ? 'text-h6':'text-h2'" 
           style="text-align: center;"
         >
           {{this.stat.count}}
-         <v-icon x-large>{{this.stat.icon}}</v-icon>
+         <v-icon :class="$vuetify.breakpoint.xs ? 'small':'x-large'" >{{this.stat.icon}}</v-icon>
         </v-col>
       </v-row>
     </v-card-text>

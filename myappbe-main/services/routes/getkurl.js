@@ -4,30 +4,24 @@ const md5 = require("md5")
 const router = express.Router();
 const Url = require("../models/Url");
 const LogCrud = require('../addons/crud');
-const { INTEGER } = require('sequelize/dist');
+const logger = require('../startup/logging');
+
 
 
 
 
 router.post('/', async (req, res) => {
   lurl = req.body.lurl
-
-  
-
   md5string = md5(lurl)
-
-  // bin = require("../addons/str2binary")(md5string)
-  // console.log(bin)
   
   // create a buffer
   const buff = Buffer.from(md5string, 'utf-8');
 
   // decode buffer as Base64
   const base64 = buff.toString('base64');
+
   // print Base64 string
   char7base64 = base64.substring(0,6)
-
-  
 
   try{
     const [url, created] = await Url.findOrCreate({
@@ -37,7 +31,6 @@ router.post('/', async (req, res) => {
       }
     });
     if (created) {
-      console.log(url.kurl); 
       LogCrud.Insert({lurl:lurl,kurl:char7base64, action:'creation'})
     }
     else{
@@ -64,6 +57,7 @@ router.post('/', async (req, res) => {
             counter+=1
           }
           else{
+            winston.error('error in generating kurl for conflicting md5 of lurl '+err)
             res.status(400).send({
               message: 'This is an error!'
            });
@@ -73,6 +67,7 @@ router.post('/', async (req, res) => {
       }
     }
     else{
+      winston.error('error in inserting lurl and its generated kurl '+err)
       res.status(400).send({
         message: 'This is an error!'
      });

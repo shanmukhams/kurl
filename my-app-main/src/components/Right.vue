@@ -1,7 +1,7 @@
 <template>
   <div >
 
-    <v-container class="right" >
+    <v-container :class="$vuetify.breakpoint.xs ? 'rightxs':'right'" >
       
       <v-card flat>
          
@@ -26,9 +26,9 @@
                       ></v-text-field>
                     </v-card-title>
 
-                    <v-btn dark class="ml-8" @click="copyText"><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
+                    <v-btn dark :class="$vuetify.breakpoint.xs ? 'ml-1':'ml-8'" @click="copyText"><v-icon dark left>mdi-content-copy</v-icon>Copy</v-btn>
 
-                    <v-btn dark class="ml-8" @click="newTab"><v-icon dark left>mdi-newspaper-variant-multiple</v-icon>Open in New tab</v-btn>
+                    <v-btn dark :class="$vuetify.breakpoint.xs ? 'ml-8':'ml-8'" @click="newTab"><v-icon dark left>mdi-newspaper-variant-multiple</v-icon>Open in New tab</v-btn>
                   
                   </v-flex>
                   
@@ -38,24 +38,24 @@
           </v-flex>
          
         </v-layout>
-        <v-layout row wrap class="stats" v-if="state.isStats">
+        <v-layout row wrap :class="$vuetify.breakpoint.xs ? 'statsxs':'stats'" v-if="state.isStats">
           
-        <v-flex xs12 md6 >
-          <v-card flat class="statsount">
+        <v-flex xs6 md6 >
+          <v-card flat :class="$vuetify.breakpoint.xs ? 'statsountxs':'statsount'">
           <DBCount :stat="stats.kurl" :state="state"/>
           </v-card>
         </v-flex>
-        <v-flex xs12 md6 >
-          <v-card flat class="statsount">
+        <v-flex xs6 md6 >
+          <v-card flat :class="$vuetify.breakpoint.xs ? 'statsountxs':'statsount'">
           <DBCount :stat="stats.lurl" :state="state"/>
           </v-card>
         </v-flex>
        
       </v-layout>
-      <v-layout row wrap class="stats" v-if="state.isStats">
+      <v-layout row wrap :class="$vuetify.breakpoint.xs ? 'statsxs':'stats'" v-if="state.isStats">
           
         <v-flex xs12 md12 >
-          <v-card flat class="ml-5">
+          <v-card flat :class="$vuetify.breakpoint.xs ? 'ml-0':'ml-5'">
           <TimeGraph :state="state"/>
           </v-card>
         </v-flex>
@@ -132,6 +132,12 @@ export default {
    /* min-height: 100vh */
 }
 
+.rightxs {
+  background-color: #116466 !important;
+  padding-right:20px
+   /* min-height: 100vh */
+}
+
 .text {
   background: #116466 !important
 }
@@ -143,10 +149,23 @@ export default {
   background: #116466 !important
 }
 
+.statsxs {
+  padding-top: 8%;
+  align-items: center;
+  background: #116466 !important
+}
+
 .statsount{
   background: #116466 !important;
   /* padding-right:30%; */
   padding-left:10%;
+}
+
+.statsountsx{
+  
+  background: #116466 !important;
+  
+  /* padding-right:30%; */
 }
 
 

@@ -1,8 +1,8 @@
 <template>
   <v-app >
 
-      <v-container fluid style="margin:0px; padding:0px; width:100%; min-height: 100vh" >
-        <v-main style="margin:0px; padding:0px; width:100%; min-height: 100vh" >
+      <v-container fluid :style="$vuetify.breakpoint.xs ? 'margin:0px; padding:0px; width:100%; ':'margin:0px; padding:0px; width:100%; min-height: 100vh'"  >
+        <v-main >
           <router-view v-bind:state="state"> 
           </router-view>
         </v-main>
