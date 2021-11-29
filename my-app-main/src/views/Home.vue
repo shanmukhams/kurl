@@ -72,6 +72,7 @@ export default {
   margin-left: 25%;
   padding-right: 5%;
   margin-right:5%;
+  min-height: 100vh !important;
 }
 
 .leftxs {

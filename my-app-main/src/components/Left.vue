@@ -26,10 +26,36 @@
       <v-flex xs12 md12 v-if="$vuetify.breakpoint.xs? false: true"> 
         <div class="heading mt-8" style="text-align: center;"><span>OR</span></div>
       </v-flex>
+      <v-flex xs12 md12 v-if="$vuetify.breakpoint.xs? false: true" style="text-align: center;"> 
+          Login with Gmail to get Personalised Dashboard
+         
+      </v-flex>
+      <v-flex xs12 md12 v-if="$vuetify.breakpoint.xs? false: true" style="text-align: center;"> 
+         
+          <v-row
+        align="center"
+        justify="space-around" class="mt-3"
+      >
+      <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <div v-on="on">
+        <v-btn disabled >
+          <v-icon left>
+            mdi-gmail
+          </v-icon>
+          Gmail
+        </v-btn>
+        </div>
+        </template>
+      <span>Under Construction . . .</span>
+    </v-tooltip>
+      </v-row>
+      </v-flex>
+      
     </v-layout>
     
    
-    <v-card flat > <Footer/></v-card>
+    
 
   
     
@@ -41,12 +67,11 @@
 <script>
 
 import Header from './Header';
-import Footer from './Footer';
 
 
 export default {
   name: 'Left',
-  components: {Header, Footer},
+  components: {Header},
   props:{
     state:{}
   },

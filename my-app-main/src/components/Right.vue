@@ -6,11 +6,11 @@
       <v-card flat>
          
         <v-layout row wrap >
-          <v-flex xs12>
+          <v-flex xs12 sm12>
             <v-card flat >
               <v-container>
                 <v-layout row wrap class="text" align="center">
-                  <v-flex xs12 md8 >
+                  <v-flex xs12 sm10 md8 >
                     <br/>
                     <h3 class="font-22 capitalize">Your KURL is . . .</h3>
                    

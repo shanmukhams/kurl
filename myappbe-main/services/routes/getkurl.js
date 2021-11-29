@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
             counter+=1
           }
           else{
-            winston.error('error in generating kurl for conflicting md5 of lurl '+err)
+            logger.error('error in generating kurl for conflicting md5 of lurl '+err)
             res.status(400).send({
               message: 'This is an error!'
            });
@@ -67,7 +67,7 @@ router.post('/', async (req, res) => {
       }
     }
     else{
-      winston.error('error in inserting lurl and its generated kurl '+err)
+      logger.error('error in inserting lurl and its generated kurl '+err)
       res.status(400).send({
         message: 'This is an error!'
      });
