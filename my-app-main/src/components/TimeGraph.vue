@@ -21,7 +21,7 @@
 
 <script>
 
-import config from '../../vue.config';
+import config from '../../config';
 
 export default {
   name: 'TimeGraph',

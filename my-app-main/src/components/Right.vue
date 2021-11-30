@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import config from '../../vue.config';
+import config from '../../config';
 import DBCount from './DBCount.vue'
 import TimeGraph from './TimeGraph.vue'
 

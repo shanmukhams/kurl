@@ -59,7 +59,7 @@
 
 <script>
 
-import config from '../../vue.config';
+import config from '../../config';
 import Header from './Header';
 
 
