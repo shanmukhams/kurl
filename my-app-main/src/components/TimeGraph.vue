@@ -7,8 +7,8 @@
       </div>
     </v-card-text>
       <v-sparkline
-        :labels="state.ts.x"
         :value="state.ts.y"
+        :labels="state.ts.x"
         :color="color"
         line-width="2"
         padding="16"
@@ -21,6 +21,8 @@
 
 <script>
 
+import config from '../../vue.config';
+
 export default {
   name: 'TimeGraph',
   components: {},
@@ -29,17 +31,19 @@ export default {
   },
   data() {
     return {
-       name:"Trend - Kurl Hits",
+       name:"Kurl Trend",
        color:"white"
     }
   },
   methods:{
     async getstats( kurl){
-        var res = await fetch("http://localhost:3000/getstats/kurl/ts/"+kurl)
+        var res = await fetch(config.api+"getstats/kurl/ts/"+kurl)
         var data = await res.json()
         this.state.ts["agg"] = data["agg"]
         this.state.ts["x"] = this.state.ts["agg"].map(x=>x.date)
+        
         this.state.ts["y"] = this.state.ts["agg"].map(x=>parseInt(x.count))
+        
         console.log(this.state.ts)
     }
      

@@ -1,8 +1,11 @@
 <template>
   <v-app >
 
+
       <v-container fluid :style="$vuetify.breakpoint.xs ? 'margin:0px; padding:0px; width:100%; ':'margin:0px; padding:0px; width:100%; min-height: 100vh'"  >
         <v-main >
+
+          <!-- Routing and state prop is passed down -->
           <router-view v-bind:state="state"> 
           </router-view>
         </v-main>
@@ -13,6 +16,8 @@
 
 
 <script>
+
+// State is single source of truth for the entire application, except for daskboard count
 
 export default {
   name: 'App',
@@ -27,8 +32,8 @@ export default {
         isStats:false,
         ts:{
           agg:'',
-          x:'',
-          y:''
+          x:[],
+          y:[]
         }
       }
     }

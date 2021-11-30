@@ -40,6 +40,7 @@
         </v-layout>
         <v-layout row wrap :class="$vuetify.breakpoint.xs ? 'statsxs':'stats'" v-if="state.isStats">
           
+        <!-- To show stats,  -->
         <v-flex xs6 md6 >
           <v-card flat :class="$vuetify.breakpoint.xs ? 'statsountxs':'statsount'">
           <DBCount :stat="stats.kurl" :state="state"/>
@@ -65,17 +66,13 @@
 
       </v-card>
 
-      
-
     </v-container>
 
-     
-    
-        
   </div>
 </template>
 
 <script>
+import config from '../../vue.config';
 import DBCount from './DBCount.vue'
 import TimeGraph from './TimeGraph.vue'
 
@@ -91,13 +88,13 @@ export default {
         kurl:{
           icon:"mdi-cloud-search",
           name:"Total Kurl Hits",
-          api:"http://localhost:3000/getstats/kurl/",
+          api:config.api+"getstats/kurl/",
           count:""
         },
         lurl:{
           icon:"mdi-archive-refresh-outline",
-          name:"Total Lurl Hits",
-          api:"http://localhost:3000/getstats/lurl/",
+          name:"Lurl Conversion Rate",
+          api:config.api+"getstats/lurl/",
           count:""
         }
 

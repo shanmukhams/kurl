@@ -53,19 +53,13 @@
       </v-flex>
       
     </v-layout>
-    
-   
-    
-
-  
-    
-    
         
   </div>
 </template>
 
 <script>
 
+import config from '../../vue.config';
 import Header from './Header';
 
 
@@ -84,8 +78,8 @@ export default {
    methods:{
      async getKurl() {
        this.state.isStats = false
-       console.log(this.state)
-          var res = await fetch('http://localhost:3000/getkurl', {
+          //  Calling api for conversion of long url to short url
+          var res = await fetch(config.api+'getkurl', {
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
@@ -97,9 +91,6 @@ export default {
             this.state.kurl = data.kurl
             this.state.fullKurl = window.location.protocol+"//"+window.location.host+"/"+this.state.kurl
             this.state.isStats = true
-
-           
-
             
         },
   

@@ -2,7 +2,7 @@
 
 
     <div>
-     hi
+     Redirecting...
 
       
     </div>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+
+import config from '../../vue.config';
 
 export default {
   name: 'Redirect2Url',
@@ -24,15 +26,13 @@ export default {
   methods: {
 
     async fetchTasks(kurl) {
-        
-        const res = await fetch('http://localhost:3000/getlurl?kurl='+kurl["kurl"], {
+        // fetch the long url for coresponding short url for redirecting
+        const res = await fetch(config.api+'getlurl?kurl='+kurl["kurl"], {
           method:'GET'
         })
         const data = await res.json()
         window.location.href = await data["lurl"]
    
-       
-        
     },
    
   },
@@ -41,15 +41,11 @@ export default {
         var kurl = this.$route.params
         console.log(kurl)
         if(kurl['kurl'] != 'undefined'){
-          console.log('hi...')
            await this.fetchTasks(kurl)
         }
         else{
-          console.log('errrror')
-          // window.location.href = "http://localhost:8081/app";
+          console.log('errrror '+this.$route.params)
         }
-        
-        // window.location.replace()
     },
        
   

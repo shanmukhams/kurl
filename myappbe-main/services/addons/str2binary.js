@@ -4,8 +4,6 @@ function strToBinary(s)
    
         for (let i = 0; i < n; i++)
         {
-            // convert each char to
-            // ASCII value
             let val = (s[i]).charCodeAt(0);
                
             // Convert ASCII value to binary

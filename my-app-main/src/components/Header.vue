@@ -5,7 +5,7 @@
       <v-container>
         <v-layout row wrap>
           <v-flex xs12 >
-              <v-img class="mx-auto mt-5 mb-0" width="50" :aspect-ratio="5/6" src="/logo.jpeg"/>
+              <v-img class="mx-auto mt-5 mb-0" width="50" :aspect-ratio="5/6" src="/logo.jpg"/>
           </v-flex>
         </v-layout>
 

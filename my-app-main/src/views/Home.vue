@@ -1,6 +1,9 @@
 <template>
 
-
+    <!-- Entire page is divided into two halfs. 
+    Left half is where you enter the Long Url and 
+    right half is where once can see kurl and stats -->
+    
     <v-layout row wrap style="margin:0px; padding:0px; " >
       <v-flex xs12 md6> 
         <v-card flat :class="$vuetify.breakpoint.xs ? 'leftxs':'left'" > 
@@ -40,13 +43,7 @@ export default {
     }
   },
   methods: {
-        
-        
       },
-
-
-       
-
   
 }
 </script>
@@ -54,15 +51,11 @@ export default {
 <style>
 
 .bc {
-  /* margin-left:1% ; */
-  /* margin-left: 1%; */
   min-height: 100vh;
   background: #116466 !important
 }
 
 .bcxs {
-  /* margin-left:1% ; */
-  /* margin-left: 1%; */
   min-height: 70vh;
   background: #116466 !important
 }
@@ -72,7 +65,6 @@ export default {
   margin-left: 25%;
   padding-right: 5%;
   margin-right:5%;
-  min-height: 100vh !important;
 }
 
 .leftxs {
